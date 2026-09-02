@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --content-max: 78ch;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+
+/* Bangla rendering */
+:lang(bn), .bn, body { font-feature-settings: "kern", "liga", "calt"; }
+
+/* Markdown content styles */
+.markdown-body {
+  line-height: 1.7;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+.markdown-body h1 { @apply text-2xl sm:text-3xl font-bold mt-6 mb-4 leading-tight; }
+.markdown-body h2 { @apply text-xl sm:text-2xl font-semibold mt-8 mb-3 border-b border-slate-200 dark:border-slate-700 pb-2; }
+.markdown-body h3 { @apply text-lg sm:text-xl font-semibold mt-6 mb-2; }
+.markdown-body h4 { @apply text-base sm:text-lg font-semibold mt-4 mb-2; }
+.markdown-body p  { @apply my-3; }
+.markdown-body ul { @apply list-disc pl-6 my-3 space-y-1; }
+.markdown-body ol { @apply list-decimal pl-6 my-3 space-y-1; }
+.markdown-body li { @apply leading-relaxed; }
+.markdown-body a  { @apply text-brand-600 dark:text-brand-500 underline underline-offset-2 break-words; }
+.markdown-body strong { @apply font-semibold; }
+.markdown-body blockquote {
+  @apply border-l-4 border-brand-500 bg-brand-50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-300 italic py-2 pl-4 pr-3 my-4 rounded-r;
+}
+.markdown-body code {
+  @apply rounded bg-slate-100 dark:bg-slate-800 text-pink-700 dark:text-pink-300 px-1.5 py-0.5 text-[0.9em] font-mono;
+}
+.markdown-body pre {
+  @apply rounded-lg bg-slate-900 text-slate-100 p-4 my-4 overflow-x-auto text-sm leading-relaxed;
+  -webkit-overflow-scrolling: touch;
+}
+.markdown-body pre code {
+  @apply bg-transparent text-inherit p-0 text-sm;
+}
+.markdown-body table {
+  @apply w-full my-4 text-sm border-collapse;
+  display: block;
+  overflow-x: auto;
+}
+.markdown-body table th,
+.markdown-body table td {
+  @apply border border-slate-200 dark:border-slate-700 px-3 py-2 align-top;
+}
+.markdown-body table th { @apply bg-slate-100 dark:bg-slate-800 font-semibold text-left; }
+.markdown-body img { @apply max-w-full h-auto rounded; }
+.markdown-body hr { @apply my-6 border-slate-200 dark:border-slate-700; }
+
+/* Anchored heading offset for sticky top bar */
+.markdown-body :is(h1,h2,h3,h4)[id]::before {
+  content: '';
+  display: block;
+  height: 56px;
+  margin-top: -56px;
+  visibility: hidden;
+}
